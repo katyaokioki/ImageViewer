@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    Адаптер платформы Windows: декодирование через Windows Imaging Component (WIC).
+    Отдельная сборка — чтобы ядро (ImageViewer.Core) оставалось кроссплатформенным,
+    а WPF-приложение и консольная утилита на Windows могли использовать один и тот же декодер.
+  -->
+  <PropertyGroup>
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <!-- Позволяет компилировать (но не запускать) WPF-проект на Linux/macOS -->
+    <EnableWindowsTargeting>true</EnableWindowsTargeting>
+    <RootNamespace>ImageViewer.Imaging.Wic</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ImageViewer.Core\ImageViewer.Core.csproj" />
+  </ItemGroup>
+
+</Project>

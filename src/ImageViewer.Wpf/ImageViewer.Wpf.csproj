@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <!-- Позволяет компилировать (но не запускать) WPF-проект на Linux/macOS -->
+    <EnableWindowsTargeting>true</EnableWindowsTargeting>
+    <AssemblyName>ImageViewer</AssemblyName>
+    <RootNamespace>ImageViewer.Wpf</RootNamespace>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ImageViewer.Core\ImageViewer.Core.csproj" />
+    <ProjectReference Include="..\ImageViewer.Imaging.Wic\ImageViewer.Imaging.Wic.csproj" />
+  </ItemGroup>
+
+</Project>

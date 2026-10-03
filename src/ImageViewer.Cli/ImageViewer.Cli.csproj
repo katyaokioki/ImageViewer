@@ -1,0 +1,36 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    Консольная утилита ivc. На Windows собирается под net10.0-windows и использует WIC-декодер
+    (все форматы), на Linux/macOS — под net10.0 с декодером SkiaSharp.
+    Это наглядно показывает переиспользование одной библиотеки в разных средах.
+  -->
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <AssemblyName>ivc</AssemblyName>
+    <RootNamespace>ImageViewer.Cli</RootNamespace>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(OS)' == 'Windows_NT'">
+    <TargetFramework>net10.0-windows</TargetFramework>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(OS)' != 'Windows_NT'">
+    <TargetFramework>net10.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ImageViewer.Core\ImageViewer.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(OS)' == 'Windows_NT'">
+    <!-- WIC-декодер использует сборки WPF (PresentationCore) -->
+    <FrameworkReference Include="Microsoft.WindowsDesktop.App.WPF" />
+    <ProjectReference Include="..\ImageViewer.Imaging.Wic\ImageViewer.Imaging.Wic.csproj" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(OS)' != 'Windows_NT'">
+    <!-- На Linux/macOS — декодер SkiaSharp (JPEG, PNG, WebP, GIF…) -->
+    <ProjectReference Include="..\ImageViewer.Imaging.Skia\ImageViewer.Imaging.Skia.csproj" />
+  </ItemGroup>
+
+</Project>

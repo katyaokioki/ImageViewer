@@ -1,0 +1,24 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Avalonia (Linux/Windows/macOS)",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "build-avalonia",
+      "program": "${workspaceFolder}/src/ImageViewer.Avalonia/bin/Debug/net10.0/ImageViewerX.dll",
+      "args": ["${workspaceFolder}/demo/images/demo_1.bmp", "--zoom", "fit", "--info", "--windowed"],
+      "cwd": "${workspaceFolder}",
+      "console": "internalConsole"
+    },
+    {
+      "name": "WPF (только Windows)",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "build-wpf",
+      "program": "${workspaceFolder}/src/ImageViewer.Wpf/bin/Debug/net10.0-windows/ImageViewer.exe",
+      "args": ["${workspaceFolder}/demo/images/demo_1.bmp", "--zoom", "fit", "--info"],
+      "cwd": "${workspaceFolder}"
+    }
+  ]
+}

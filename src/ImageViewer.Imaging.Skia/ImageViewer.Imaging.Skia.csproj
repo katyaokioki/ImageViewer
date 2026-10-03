@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    Кроссплатформенный декодер на SkiaSharp (Linux, Windows, macOS).
+    Используется Avalonia-приложением и консольной утилитой на Linux/macOS.
+    Версия SkiaSharp совпадает с той, на которой построена Avalonia 11.
+  -->
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <RootNamespace>ImageViewer.Imaging.Skia</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="SkiaSharp" Version="2.88.9" />
+    <PackageReference Include="SkiaSharp.NativeAssets.Linux" Version="2.88.9" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ImageViewer.Core\ImageViewer.Core.csproj" />
+  </ItemGroup>
+
+</Project>

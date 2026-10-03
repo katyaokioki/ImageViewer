@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    Библиотека классов без зависимостей от UI-фреймворков.
+    Целевая платформа net10.0 (кроссплатформенная) — поэтому её можно подключить
+    к Console, WinForms, WPF, MAUI и Avalonia.
+  -->
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <RootNamespace>ImageViewer.Core</RootNamespace>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <NoWarn>$(NoWarn);CS1591</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <InternalsVisibleTo Include="ImageViewer.Core.Tests" />
+  </ItemGroup>
+
+</Project>

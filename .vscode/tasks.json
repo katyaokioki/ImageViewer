@@ -1,0 +1,32 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "build-avalonia",
+      "type": "shell",
+      "command": "dotnet build src/ImageViewer.Avalonia",
+      "group": { "kind": "build", "isDefault": true },
+      "problemMatcher": "$msCompile"
+    },
+    {
+      "label": "build-wpf",
+      "type": "shell",
+      "command": "dotnet build src/ImageViewer.Wpf",
+      "group": "build",
+      "problemMatcher": "$msCompile"
+    },
+    {
+      "label": "test",
+      "type": "shell",
+      "command": "dotnet test tests/ImageViewer.Core.Tests",
+      "group": "test",
+      "problemMatcher": "$msCompile"
+    },
+    {
+      "label": "generate-demo-images",
+      "type": "shell",
+      "command": "dotnet run --project src/ImageViewer.Cli -- generate demo/images --count 12",
+      "problemMatcher": []
+    }
+  ]
+}

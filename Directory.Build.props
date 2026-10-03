@@ -1,0 +1,12 @@
+<Project>
+  <!-- Общие настройки для всех проектов решения -->
+  <PropertyGroup>
+    <LangVersion>latest</LangVersion>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Authors>Student</Authors>
+    <Product>Image Viewer</Product>
+    <Version>1.0.0</Version>
+    <Copyright>© 2026</Copyright>
+  </PropertyGroup>
+</Project>

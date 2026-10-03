@@ -1,0 +1,27 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="ImageViewer.Ui.Views.HelpWindow"
+        Title="Справка — Image Viewer"
+        Width="780" Height="720"
+        WindowStartupLocation="CenterOwner"
+        Background="{DynamicResource DialogBackgroundBrush}">
+    <DockPanel Margin="16">
+        <DockPanel DockPanel.Dock="Bottom" Margin="0,12,0,0" LastChildFill="False">
+            <TextBlock DockPanel.Dock="Left" VerticalAlignment="Center"
+                       Foreground="{DynamicResource SecondaryForegroundBrush}"
+                       Text="Esc или F1 — закрыть"/>
+            <Button x:Name="CloseButton" DockPanel.Dock="Right" Content="Закрыть" Classes="dialog" IsDefault="True"/>
+            <Button x:Name="CopyButton" DockPanel.Dock="Right" Content="Копировать" Classes="dialog"/>
+        </DockPanel>
+        <TextBlock DockPanel.Dock="Top" Text="Image Viewer — управление" FontSize="20" FontWeight="SemiBold"
+                   Margin="0,0,0,12" Foreground="{DynamicResource ForegroundBrush}"/>
+        <Border BorderBrush="{DynamicResource PanelBorderBrush}" BorderThickness="1" CornerRadius="6"
+                Background="{DynamicResource InputBackgroundBrush}">
+            <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Padding="12">
+                <SelectableTextBlock x:Name="HelpTextBlock" FontSize="13"
+                                     FontFamily="Cascadia Mono, DejaVu Sans Mono, Liberation Mono, Consolas, monospace"
+                                     Foreground="{DynamicResource ForegroundBrush}"/>
+            </ScrollViewer>
+        </Border>
+    </DockPanel>
+</Window>

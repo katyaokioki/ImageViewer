@@ -1,0 +1,29 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    Кроссплатформенный графический просмотрщик на Avalonia UI (Linux, Windows, macOS).
+    Логика — в ImageViewer.Core, декодирование — ImageViewer.Imaging.Skia.
+  -->
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <AssemblyName>ImageViewerX</AssemblyName>
+    <!-- Пространство имён не «*.Avalonia», чтобы не перекрывать имя библиотеки Avalonia -->
+    <RootNamespace>ImageViewer.Ui</RootNamespace>
+    <BuiltInComInteropSupport>true</BuiltInComInteropSupport>
+    <!-- Привязки по рефлексии: проще для учебного проекта (без x:DataType в каждом шаблоне) -->
+    <AvaloniaUseCompiledBindingsByDefault>false</AvaloniaUseCompiledBindingsByDefault>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Avalonia" Version="11.3.*" />
+    <PackageReference Include="Avalonia.Desktop" Version="11.3.*" />
+    <PackageReference Include="Avalonia.Themes.Fluent" Version="11.3.*" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ImageViewer.Core\ImageViewer.Core.csproj" />
+    <ProjectReference Include="..\ImageViewer.Imaging.Skia\ImageViewer.Imaging.Skia.csproj" />
+  </ItemGroup>
+
+</Project>

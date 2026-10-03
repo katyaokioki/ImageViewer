@@ -1,0 +1,12 @@
+{
+  "solution": {
+    "path": "ImageViewer.sln",
+    "projects": [
+      "src\\ImageViewer.Core\\ImageViewer.Core.csproj",
+      "src\\ImageViewer.Imaging.Skia\\ImageViewer.Imaging.Skia.csproj",
+      "src\\ImageViewer.Avalonia\\ImageViewer.Avalonia.csproj",
+      "src\\ImageViewer.Cli\\ImageViewer.Cli.csproj",
+      "tests\\ImageViewer.Core.Tests\\ImageViewer.Core.Tests.csproj"
+    ]
+  }
+}

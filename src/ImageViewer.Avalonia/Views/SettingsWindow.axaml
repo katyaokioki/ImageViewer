@@ -1,0 +1,94 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="ImageViewer.Ui.Views.SettingsWindow"
+        Title="Настройки — Image Viewer"
+        Width="560" SizeToContent="Height"
+        CanResize="False"
+        WindowStartupLocation="CenterOwner"
+        Background="{DynamicResource DialogBackgroundBrush}">
+
+    <Window.Styles>
+        <Style Selector="ComboBox">
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="Margin" Value="0,3"/>
+        </Style>
+        <Style Selector="CheckBox">
+            <Setter Property="Margin" Value="0,2"/>
+        </Style>
+        <Style Selector="TextBlock.group">
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="Margin" Value="0,12,0,6"/>
+            <Setter Property="Foreground" Value="{DynamicResource AccentBrush}"/>
+        </Style>
+    </Window.Styles>
+
+    <StackPanel Margin="20,8,20,16">
+        <TextBlock Text="Внешний вид" Classes="group"/>
+        <Grid ColumnDefinitions="190,*" RowDefinitions="Auto,Auto,Auto,Auto">
+            <TextBlock Text="Тема" Classes="label"/>
+            <ComboBox x:Name="ThemeBox" Grid.Column="1" SelectedItem="{Binding Theme}"/>
+
+            <TextBlock Grid.Row="1" Text="Фон" Classes="label"/>
+            <ComboBox x:Name="BackgroundBox" Grid.Row="1" Grid.Column="1" SelectedItem="{Binding BackgroundMode}"/>
+
+            <TextBlock Grid.Row="2" Text="Свой цвет фона" Classes="label"/>
+            <DockPanel Grid.Row="2" Grid.Column="1" Margin="0,3">
+                <Border x:Name="ColorPreview" DockPanel.Dock="Right" Width="32" Margin="8,0,0,0" CornerRadius="4"
+                        BorderBrush="{DynamicResource PanelBorderBrush}" BorderThickness="1"/>
+                <TextBox x:Name="ColorBox" Text="{Binding BackgroundColor}"/>
+            </DockPanel>
+
+            <TextBlock Grid.Row="3" Text="Масштабирование" Classes="label"/>
+            <ComboBox x:Name="ScalingBox" Grid.Row="3" Grid.Column="1" SelectedItem="{Binding ScalingQuality}"/>
+        </Grid>
+
+        <TextBlock Text="Просмотр" Classes="group"/>
+        <Grid ColumnDefinitions="190,*" RowDefinitions="Auto,Auto,Auto,Auto">
+            <TextBlock Text="Режим окна при запуске" Classes="label"/>
+            <ComboBox x:Name="WindowModeBox" Grid.Column="1" SelectedItem="{Binding WindowStartMode}"/>
+
+            <TextBlock Grid.Row="1" Text="Масштаб по умолчанию" Classes="label"/>
+            <ComboBox x:Name="ZoomModeBox" Grid.Row="1" Grid.Column="1" SelectedItem="{Binding DefaultZoomMode}"/>
+
+            <TextBlock Grid.Row="2" Text="Шаг масштаба" Classes="label"/>
+            <DockPanel Grid.Row="2" Grid.Column="1">
+                <TextBlock x:Name="ZoomStepText" DockPanel.Dock="Right" Width="56" TextAlignment="Right"
+                           VerticalAlignment="Center" Foreground="{DynamicResource ForegroundBrush}"/>
+                <Slider x:Name="ZoomStepSlider" Minimum="1.05" Maximum="2" TickFrequency="0.05"
+                        IsSnapToTickEnabled="True" Value="{Binding ZoomStep}"/>
+            </DockPanel>
+
+            <TextBlock Grid.Row="3" Text="Интервал слайд-шоу" Classes="label"/>
+            <DockPanel Grid.Row="3" Grid.Column="1">
+                <TextBlock x:Name="IntervalText" DockPanel.Dock="Right" Width="56" TextAlignment="Right"
+                           VerticalAlignment="Center" Foreground="{DynamicResource ForegroundBrush}"/>
+                <Slider x:Name="IntervalSlider" Minimum="1" Maximum="30" TickFrequency="0.5"
+                        IsSnapToTickEnabled="True" Value="{Binding SlideshowIntervalSeconds}"/>
+            </DockPanel>
+        </Grid>
+        <CheckBox Content="Сбрасывать масштаб при переходе к другому изображению" IsChecked="{Binding ResetZoomOnNavigate}"/>
+        <CheckBox Content="Показывать строку состояния" IsChecked="{Binding ShowStatusBar}"/>
+        <CheckBox Content="Показывать панель информации" IsChecked="{Binding ShowInfoPanel}"/>
+        <CheckBox Content="Показывать гистограмму" IsChecked="{Binding ShowHistogram}"/>
+
+        <TextBlock Text="Папка" Classes="group"/>
+        <Grid ColumnDefinitions="190,*">
+            <TextBlock Text="Сортировка" Classes="label"/>
+            <ComboBox x:Name="SortBox" Grid.Column="1" SelectedItem="{Binding SortMode}"/>
+        </Grid>
+        <CheckBox Content="По убыванию" IsChecked="{Binding SortDescending}"/>
+        <CheckBox Content="Переход по кругу (после последнего — первое)" IsChecked="{Binding WrapAround}"/>
+        <CheckBox Content="Открывать последний файл при запуске без параметров" IsChecked="{Binding RestoreLastFile}"/>
+
+        <TextBlock x:Name="LocationText" TextWrapping="Wrap" FontSize="11" Margin="0,14,0,4"
+                   Foreground="{DynamicResource SecondaryForegroundBrush}"/>
+        <TextBlock x:Name="ErrorText" TextWrapping="Wrap" Foreground="#FFE05050" IsVisible="False" Margin="0,0,0,4"/>
+
+        <DockPanel LastChildFill="False" Margin="0,8,0,0">
+            <Button x:Name="ResetButton" DockPanel.Dock="Left" Content="По умолчанию" MinWidth="110"/>
+            <Button x:Name="CancelButton" DockPanel.Dock="Right" Content="Отмена" Classes="dialog" IsCancel="True"/>
+            <Button x:Name="SaveButton" DockPanel.Dock="Right" Content="Сохранить" Classes="dialog accent" IsDefault="True"/>
+        </DockPanel>
+    </StackPanel>
+</Window>
